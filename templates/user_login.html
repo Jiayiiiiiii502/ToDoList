@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-5">col-5(welcome slogan)</div>
+    <div class="col-7" >
+      <div class="regist_invitation">
+        <h1>Do not have an account?</h1>
+        <h1>Registrate now!</h1>
+        <br>
+        <a href="{{ url_for('list.home') }}">
+          <button type="submit" class="btn btn-primary" >Go Registrate</button>
+        </a>
+      </div>
+      <hr>
+      <form id="login">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter Username</label>
+          <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Remember me for 30 days</label>
+        </div>
+      </form>
+      <hr>
+      <a href="{{ url_for('list.home') }}">
+        <button type="submit" class="btn btn-primary" >Login</button>
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

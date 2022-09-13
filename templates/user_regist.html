@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-5">col-5(welcome slogan)</div>
+    <div class="col-7" >
+      <form id="Registration">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Verification code</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="catch">
+            <div class="input-group-append">
+{#                        获取验证码按钮，出发鼠标点击事件，见regist.js#}
+              <button class="btn btn-outline-secondary" type="button" id="get_code">Get code</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Set username</label>
+          <input type="text" class="form-control" name="username">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Set Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirm password</label>
+          <input type="password" class="form-control" name="password_confirm">
+        </div>
+        <button type="submit" class="btn btn-primary">Registrate</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,10 @@
 from flask import Flask
+from blueprints import user_bp,list_bp
 
 app = Flask(__name__)
+
+app.register_blueprint(user_bp)
+app.register_blueprint(list_bp)
 
 
 @app.route('/')
