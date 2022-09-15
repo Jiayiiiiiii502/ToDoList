@@ -15,29 +15,37 @@
         <h1>Do not have an account?</h1>
         <h1>Registrate now!</h1>
         <br>
-        <a href="{{ url_for('list.home') }}">
+        <a href="{{ url_for('user.regist') }}">
           <button type="submit" class="btn btn-primary" >Go Registrate</button>
         </a>
       </div>
       <hr>
-      <form id="login">
+      <form id="login" action="{{ url_for("user.login") }}" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">Enter Username</label>
-          <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input name="password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Remember me for 30 days</label>
         </div>
+
+        <div class="form-group">
+        {% for message in get_flashed_messages() %}
+          <div class="form-group">
+            <div class="text-danger">{{ message }}</div>
+          </div>
+        {% endfor %}
+        </div>
+
+        <a href="{{ url_for('list.home') }}">
+          <button type="submit" class="btn btn-primary" >Login</button>
+        </a>
       </form>
-      <hr>
-      <a href="{{ url_for('list.home') }}">
-        <button type="submit" class="btn btn-primary" >Login</button>
-      </a>
     </div>
   </div>
 </div>
