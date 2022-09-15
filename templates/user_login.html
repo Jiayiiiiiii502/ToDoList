@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+{#  add the style link#}
   <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
 </head>
@@ -15,18 +16,22 @@
         <h1>Do not have an account?</h1>
         <h1>Registrate now!</h1>
         <br>
+{#        jump to the registration page if get this button#}
         <a href="{{ url_for('user.regist') }}">
           <button type="submit" class="btn btn-primary" >Go Registrate</button>
         </a>
       </div>
       <hr>
+{#      connect login form to the login function and set the method as post#}
       <form id="login" action="{{ url_for("user.login") }}" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">Enter Username</label>
+{#            name this blocket as username#}
           <input name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
+{#            name this blocket as password#}
           <input name="password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="form-group form-check">
@@ -34,6 +39,7 @@
           <label class="form-check-label" for="exampleCheck1">Remember me for 30 days</label>
         </div>
 
+{#        if login doesn't success, then, show the error flashed message#}
         <div class="form-group">
         {% for message in get_flashed_messages() %}
           <div class="form-group">
@@ -41,7 +47,7 @@
           </div>
         {% endfor %}
         </div>
-
+{#        redirect to the list_home page if login successfully#}
         <a href="{{ url_for('list.home') }}">
           <button type="submit" class="btn btn-primary" >Login</button>
         </a>
