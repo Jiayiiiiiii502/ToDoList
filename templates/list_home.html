@@ -1,6 +1,51 @@
 {% extends "list_base.html" %}
 {% block title %}List_Home{% endblock %}
 
-{% block head %}{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+{% endblock %}
 
-{% block body %}List_home{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-3">the left side</div>
+    <div class="col-6">
+      <br><br>
+      <div class="table-responsive">
+        <table  class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Heading</th>
+              <th scope="col">Status</th>
+              <th scope="col">Deadline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-3">the right side</div>
+  </div>
+</div>
+{% endblock %}

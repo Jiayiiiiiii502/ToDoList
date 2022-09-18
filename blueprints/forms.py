@@ -3,6 +3,12 @@ from wtforms.validators import length, email, EqualTo
 from models import EmailCodeModel, UserModel
 
 
+# add a new thing
+class TodoForm(wtforms.Form):
+    title = wtforms.StringField(validators=[length(min=1,max=200)])
+    content = wtforms.StringField(validators=[length(min=0)])
+    category = wtforms.StringField(validators=[length(min=1, max=200)])
+
 # login form
 class LoginForm(wtforms.Form):
     # setting username and password format

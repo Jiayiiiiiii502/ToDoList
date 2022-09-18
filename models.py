@@ -1,6 +1,19 @@
 from exts import db
 from datetime import datetime
 
+# create list model
+class ToDoModel(db.Model):
+    __tablename__ = "todo"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(200), nullable=False)
+    content= db.Column(db.Text, nullable=False)
+    category = db.Column(db.String(200), nullable=False)
+    create_time = db.Column(db.DateTime,default=datetime.now)
+    completion=db.Column(db.Boolean,default=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user = db.relationship("UserModel", backref="blogs")
+
 
 # create user information model
 class UserModel(db.Model):

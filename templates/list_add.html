@@ -1,6 +1,78 @@
 {% extends "list_base.html" %}
 {% block title %}Add{% endblock %}
 
-{% block head %}{% endblock %}
+{% block head %}
 
-{% block body %}Add issues{% endblock %}
+
+<script src="{{ url_for('static',filename="assets/jquery.min.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/moment.min.js")}}"></script>
+  <script src="{{ url_for('static',filename="assets/bootstrap.min.js")}}"></script>
+<script src="{{ url_for('static',filename="assets/bootstrap-datetimepicker.min.js")}}"></script>
+<script src="{{ url_for('static',filename="JS/add.js")}}"></script>
+      <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+{% endblock %}
+
+{% block body %}
+{#<div class="container">#}
+{#  <div class="row">#}
+{#    <div class="col">#}
+{#      <h2>Step1 Heading</h2>#}
+{#    </div>#}
+{#    <div class="col">#}
+{#      <h2>Step2 Content</h2>#}
+{#    </div>#}
+{#  </div>#}
+{#  <br>#}
+{#  <div class="row">#}
+{#    <div class="col">#}
+{#      <h2>Step3 Category</h2>#}
+{#    </div>#}
+{#    <div class="col">#}
+{#      <h2>Step4 DDL</h2>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+
+  <div class="container">
+  <div class="row">
+    <div class="col-5">Steps 滚动监听</div>
+    <div class="col-7" >
+      <form id="add" action="{{ url_for('list.add')}}" method="post">
+{#      单行输入框#}
+      <div class="form-group">
+        <input  type="text" name="title" class="form-control" placeholder="Enter the title">
+      </div>
+{#      多行输入框#}
+      <div class="form-group">
+        <textarea   name="content" class="form-control" rows="10" placeholder="Enter the content"></textarea>
+      </div>
+
+      <div class="form-group">
+        <input  type="text" name="category" class="form-control" placeholder="Enter category here">
+      </div>
+
+{#      <div class="form-group">#}
+{#        <label class="col-sm-2 control-label">Deadline</label>#}
+{#         <div class="col-sm-10">#}
+{#           <input type="text" class="form-control" id="ddl" placeholder="Deadline">#}
+{#         </div>#}
+{#      </div>#}
+
+      <div class="form-group">
+        {% for message in get_flashed_messages() %}
+          <div class="form-group">
+            <div class="text-danger">{{ message }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-lg btn-block">Submitting</button>
+      </div>
+    </form>
+    </div>
+  </div>
+  </div>
+{% endblock %}
