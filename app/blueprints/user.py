@@ -1,10 +1,10 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
 from .forms import RegistForm,LoginForm
-from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify,session,g
-from exts import mail,db
+from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify,session
+from app.exts import mail,db
 from flask_mail import Message
-from models import EmailCodeModel,UserModel
+from app.models import EmailCodeModel,UserModel
 import string
 import random
 bp = Blueprint("user", __name__, url_prefix='/')

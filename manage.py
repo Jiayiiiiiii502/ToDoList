@@ -1,9 +1,13 @@
 from flask import Flask, session, g
 import config
-from exts import db, mail
-from blueprints import user_bp, list_bp
+from app.exts import db, mail
+# from app.blueprints import user_bp, list_bp
+from app.blueprints import user_bp,list_bp
 from flask_migrate import Migrate
-from models import UserModel
+from app.models import UserModel
+from flask_moment import Moment
+
+
 
 app = Flask(__name__)
 # add configuration file
@@ -14,6 +18,8 @@ db.init_app(app)
 mail.init_app(app)
 # get migrate file through database init
 migrate = Migrate(app, db)
+# set local moment
+moment=Moment(app)
 
 # connect various modules bp to app
 app.register_blueprint(user_bp)

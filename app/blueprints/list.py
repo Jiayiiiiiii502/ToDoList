@@ -1,7 +1,7 @@
 from flask import Blueprint,g,render_template,request,redirect,flash,url_for
 from .forms import TodoForm
-from models import ToDoModel
-from exts import db
+from app.models import ToDoModel
+from app.exts import db
 
 bp=Blueprint("list",__name__,url_prefix='/list')
 
@@ -11,14 +11,19 @@ def home():
     context = {
         "user": g.user.username
     }
-    return render_template("list_home.html",**context)
+    # return render_template("list_home.html",**context)
+    todos = ToDoModel.query.order_by(db.text("create_time")).all()
+    return render_template("list_home.html", todos=todos, **context)
 
-@bp.route("/detail")
-def detail():
+@bp.route("/detail/<int:todo_id>")
+def detail(todo_id):
     context = {
         "user": g.user.username
     }
-    return render_template("list_detail.html",**context)
+    todo=ToDoModel.query.get(todo_id)
+    return render_template("list_detail.html",todo=todo,**context)
+
+    # return render_template("list_detail.html", **context)
 
 @bp.route("/add",methods=['GET','POST'])
 def add():
@@ -52,11 +57,11 @@ def finished():
     context = {
         "user": g.user.username
     }
-    return render_template("list_finished.html",**context)
+    return render_template("list_finished.html", **context)
 
 @bp.route("/unfinished")
 def unfinished():
     context = {
         "user": g.user.username
     }
-    return render_template("list_unfinished.html",**context)
+    return render_template("list_unfinished.html", **context)

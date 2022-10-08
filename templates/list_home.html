@@ -7,6 +7,32 @@
 {% endblock %}
 
 {% block body %}
+{#  <div class="row">#}
+{#    <div class="col"></div>#}
+{#    <div class="col-8">#}
+{#      <ul class="question-ul">#}
+{#        {% for todo in todos %}#}
+{#        <li>#}
+{#          <div class="side-question">#}
+{#            <!--头像-->#}
+{#            <img class="side-question-avatar" src="{{ url_for('static',filename='images/1.jpg') }}" alt="">#}
+{#          </div>#}
+{##}
+{#          <div class="question-main">#}
+{#            <p class="question-title"><a href="#">{{ todo.title }}</a></p>#}
+{#            <p class="question-content">{{ todo.content }}</p>#}
+{#            <p class="question-detail">#}
+{#              <span class="question-author">{{ todo.user.username }}</span>#}
+{#              <span class="question-time">{{ todo.create_time }}</span>#}
+{#            </p>#}
+{#          </div>#}
+{#        </li>#}
+{#          <br><br>#}
+{#        {% endfor %}#}
+{#      </ul>#}
+{#    </div>#}
+{#    <div class="col"></div>#}
+{#  </div>#}
 <div class="container">
   <div class="row">
     <div class="col-3">the left side</div>
@@ -22,25 +48,16 @@
               <th scope="col">Deadline</th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {% for todo in todos %}
+              <tr>
+                  <th scope="row"><a href="{{ url_for('list.detail',todo_id=todo.id) }}">{{ todo.id }}</a></th>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.completion }}</td>
+                <td>Deadline</td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

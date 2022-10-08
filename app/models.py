@@ -1,4 +1,5 @@
-from exts import db
+# from exts import db
+from .exts import db
 from datetime import datetime
 
 # create list model
@@ -12,7 +13,7 @@ class ToDoModel(db.Model):
     completion=db.Column(db.Boolean,default=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user = db.relationship("UserModel", backref="blogs")
+    user = db.relationship("UserModel", backref="todos")
 
 
 # create user information model

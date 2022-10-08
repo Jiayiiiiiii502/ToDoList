@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>list_detail</title>
-</head>
-<body>
-liat_detail
-</body>
-</html>
+{% extends "list_base.html" %}
+{% block title %}Add{% endblock %}
+
+{% block head %}
+
+
+<script src="{{ url_for('static',filename="assets/jquery.min.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/moment.min.js")}}"></script>
+  <script src="{{ url_for('static',filename="assets/bootstrap.min.js")}}"></script>
+<script src="{{ url_for('static',filename="assets/bootstrap-datetimepicker.min.js")}}"></script>
+<script src="{{ url_for('static',filename="JS/add.js")}}"></script>
+      <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-3"></div>
+        <div  class="col-8" id="todo_detail">
+            <h3 class="todo_title">{{ todo.title }}</h3>
+            <p class="todo_info">
+                <span>Create time: {{ todo.create_time }}</span>
+                <span>Category: {{ todo.category }}</span>
+            </p>
+            <hr>
+            <p class="todo_contents">Contents: {{ todo.content }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-8" id="change_status">
+            <h3>Set new status for this issue</h3>
+            <a href="{{ url_for('list.home') }}">
+            <button type="button" class="btn btn-outline-warning">Completed</button>
+            </a>
+            <a href="{{ url_for('list.home') }}">
+            <button type="button" class="btn btn-outline-info">Uncompleted</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}
