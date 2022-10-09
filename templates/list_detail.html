@@ -2,15 +2,16 @@
 {% block title %}Add{% endblock %}
 
 {% block head %}
-
-
+<script src="{{ url_for('static',filename="JQuery/details.js") }}"></script>
+<script src="{{ url_for('static',filename="JS/detail.js") }}"></script>
 <script src="{{ url_for('static',filename="assets/jquery.min.js") }}"></script>
 <script src="{{ url_for('static',filename="assets/moment.min.js")}}"></script>
   <script src="{{ url_for('static',filename="assets/bootstrap.min.js")}}"></script>
 <script src="{{ url_for('static',filename="assets/bootstrap-datetimepicker.min.js")}}"></script>
-<script src="{{ url_for('static',filename="JS/add.js")}}"></script>
       <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+
+
 {% endblock %}
 
 {% block body %}
@@ -24,18 +25,23 @@
             </p>
             <hr>
             <p class="todo_contents">Contents: {{ todo.content }}</p>
+            <p class="todo_completion">Completed status: {{ todo.completion }} </p>
+            <form  id="status" method="POST" action="{{ url_for('list.detail',todo_id=todo.id) }}">
+                <button type="submit" id="completed" class="btn btn-primary">Change Status</button>
+            </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-3"></div>
-        <div class="col-8" id="change_status">
-            <h3>Set new status for this issue</h3>
-            <a href="{{ url_for('list.home') }}">
-            <button type="button" class="btn btn-outline-warning">Completed</button>
-            </a>
-            <a href="{{ url_for('list.home') }}">
-            <button type="button" class="btn btn-outline-info">Uncompleted</button>
-            </a>
-        </div>
-    </div>
+{#    <div class="row">#}
+{#        <div class="col-3"></div>#}
+{#        <div class="col-8" id="change_status">#}
+{#            <h3>Set new status for this issue</h3>#}
+{#            <a href="{{ url_for('list.home') }}">#}
+{#            <button type="button" method="POST" action="{{ url_for('list.home') }}" class="btn btn-outline-warning" id="completed">Completed</button>#}
+{#            </a>#}
+{#            <a href="{{ url_for('list.home') }}">#}
+{#            <button type="button" class="btn btn-outline-info" id="uncompleted">Uncompleted</button>#}
+{#            </a>#}
+{#        </div>#}
+{#    </div>#}
+
 {% endblock %}

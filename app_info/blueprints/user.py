@@ -2,9 +2,9 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
 from .forms import RegistForm,LoginForm
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify,session
-from app.exts import mail,db
+from app_info.exts import mail,db
 from flask_mail import Message
-from app.models import EmailCodeModel,UserModel
+from app_info.models import EmailCodeModel,UserModel
 import string
 import random
 bp = Blueprint("user", __name__, url_prefix='/')
@@ -13,7 +13,6 @@ bp = Blueprint("user", __name__, url_prefix='/')
 @bp.route("/",methods=['GET','POST'])
 def login():
     if request.method == 'GET':
-        print("the method is get")
         return render_template("user_login.html")
     else:
         # get the form from the html
@@ -25,7 +24,6 @@ def login():
             # otherwise, show the error message
             user = UserModel.query.filter_by(username=username).first()
             if user and check_password_hash(user.password,password):
-                print(user)
                 session['user_id']=user.id
                 return redirect(url_for("list.home"))
             else:

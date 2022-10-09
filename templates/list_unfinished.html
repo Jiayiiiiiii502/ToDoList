@@ -1,6 +1,45 @@
 {% extends "list_base.html" %}
 {% block title %}List_Unfinished{% endblock %}
 
-{% block head %}{% endblock %}
+{% block head %}
+<script src="{{ url_for('static',filename="assets/jquery.min.js") }}"></script>
+<script src="{{ url_for('static',filename="assets/moment.min.js")}}"></script>
+<script src="{{ url_for('static',filename="assets/bootstrap.min.js")}}"></script>
+<script src="{{ url_for('static',filename="assets/bootstrap-datetimepicker.min.js")}}"></script>
+<link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
 
-{% block body %}List_Unfinished{% endblock %}
+{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-3">the left side</div>
+    <div class="col-6">
+      <br><br>
+      <div class="table-responsive">
+        <table  class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Number</th>
+              <th scope="col">Heading</th>
+              <th scope="col">Status</th>
+              <th scope="col">Deadline</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for todo in todos %}
+              <tr>
+                  <th scope="row"><a href="{{ url_for('list.detail',todo_id=todo.id) }}">{{ todo.id }}</a></th>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.completion }}</td>
+                <td>Deadline</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-3">the right side</div>
+  </div>
+</div>
+{% endblock %}

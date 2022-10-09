@@ -12,13 +12,14 @@
   <script src="{{ url_for('static',filename="JS/regist.js") }}"></script>
   <link rel="stylesheet" href="{{ url_for('static',filename="bootstrap/bootstrap.4.6.min.css") }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+
 </head>
 <body>
 <div class="container">
   <div class="row">
     <div class="col-5">col-5(welcome slogan)</div>
     <div class="col-7" >
-      <form id="Registration" method="POST", action="{{ url_for('user.regist') }}">
+      <form id="Registration" method="POST" action="{{ url_for('user.regist') }}">
         <div class="form-group">
           <label for="exampleFormControlInput1">Email address</label>
           <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
